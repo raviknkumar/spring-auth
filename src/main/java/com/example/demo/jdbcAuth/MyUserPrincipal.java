@@ -2,36 +2,30 @@ package com.example.demo.jdbcAuth;
 
 import com.example.demo.AuthUser;
 import org.springframework.security.core.GrantedAuthority;
-import org.springframework.security.core.authority.SimpleGrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
 
-import java.util.*;
+import java.util.Collection;
 
 public class MyUserPrincipal implements UserDetails {
+    private AuthUser user;
 
-    private AuthUser authUser;
-
-    public MyUserPrincipal(AuthUser authUser) {
-        this.authUser = authUser;
+    public MyUserPrincipal(AuthUser user) {
+        this.user = user;
     }
 
     @Override
     public Collection<? extends GrantedAuthority> getAuthorities() {
-        List<SimpleGrantedAuthority> simpleGrantedAuthorityList = new ArrayList<>();
-        for(String role : authUser.getRoles()) {
-            simpleGrantedAuthorityList.add(new SimpleGrantedAuthority("ROLE_"+role));
-        }
-        return simpleGrantedAuthorityList;
+        return null;
     }
 
     @Override
     public String getPassword() {
-        return authUser.getPassword();
+        return user.getPassword();
     }
 
     @Override
     public String getUsername() {
-        return authUser.getUserName();
+        return user.getUserName();
     }
 
     @Override

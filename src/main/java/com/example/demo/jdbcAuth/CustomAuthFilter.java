@@ -3,6 +3,7 @@ package com.example.demo.jdbcAuth;
 import com.example.demo.AuthUser;
 import org.springframework.security.authentication.AuthenticationManager;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
+import org.springframework.security.core.Authentication;
 import org.springframework.security.core.authority.SimpleGrantedAuthority;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.security.web.authentication.www.BasicAuthenticationFilter;
@@ -22,6 +23,11 @@ public class CustomAuthFilter extends BasicAuthenticationFilter {
     public CustomAuthFilter(AuthenticationManager authenticationManager, UserService userService) {
         super(authenticationManager);
         this.userService = userService;
+    }
+
+    @Override
+    protected void onSuccessfulAuthentication(HttpServletRequest request, HttpServletResponse response, Authentication authResult) throws IOException {
+        super.onSuccessfulAuthentication(request, response, authResult);
     }
 
     @Override
