@@ -1,5 +1,6 @@
 package com.example.demo.jdbcAuth;
 
+
 import com.example.demo.AuthUser;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
@@ -7,9 +8,9 @@ import org.springframework.security.core.userdetails.UserDetails;
 import java.util.Collection;
 
 public class MyUserPrincipal implements UserDetails {
-    private AuthUser user;
+    private User user;
 
-    public MyUserPrincipal(AuthUser user) {
+    public MyUserPrincipal(User user) {
         this.user = user;
     }
 
@@ -25,7 +26,7 @@ public class MyUserPrincipal implements UserDetails {
 
     @Override
     public String getUsername() {
-        return user.getUserName();
+        return user.getName();
     }
 
     @Override

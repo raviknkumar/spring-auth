@@ -1,13 +1,18 @@
 package com.example.demo;
 
+import com.example.demo.jdbcAuth.Hashing;
+import com.example.demo.jdbcAuth.User;
+import com.example.demo.jdbcAuth.UserRepo;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.access.prepost.PreAuthorize;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
+
+import javax.annotation.PostConstruct;
 
 @RestController
-@RequestMapping("/a")
 public class HelloController {
+
+    @Autowired private UserRepo userRepo;
 
     @GetMapping("/")
     public String greet(){
@@ -19,10 +24,18 @@ public class HelloController {
         return new String("hello");
     }
 
-//    @PreAuthorize("hasAnyRole('ADMIN')")
     @GetMapping("/admin")
     public String greetAdmin(){
         return new String("admin");
     }
 
+    @PostMapping("/signup")
+    public User addUser(@RequestBody User user){
+        user.setPassword(Hashing.getEncoder().encode(user.getPassword()));
+        userRepo.save(user);
+        return user;
+    }
+
 }
+
+//    @PreAuthorize("hasAnyRole('ADMIN','USER')")
