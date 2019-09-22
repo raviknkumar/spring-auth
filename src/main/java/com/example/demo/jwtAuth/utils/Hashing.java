@@ -1,4 +1,4 @@
-package com.example.demo.jdbcAuth;
+package com.example.demo.jwtAuth.utils;
 
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 

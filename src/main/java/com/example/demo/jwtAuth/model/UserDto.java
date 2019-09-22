@@ -1,4 +1,4 @@
-package com.example.demo;
+package com.example.demo.jwtAuth.model;
 
 import lombok.AllArgsConstructor;
 import lombok.Builder;
@@ -11,10 +11,8 @@ import java.util.List;
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
-public class AuthUser {
-
-    String userName;
+public class UserDto {
+    private String username;
     private String password;
-    private List<String> roles;
-
+    private List<Role> roles;
 }

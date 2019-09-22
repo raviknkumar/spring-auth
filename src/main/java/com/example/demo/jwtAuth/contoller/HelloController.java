@@ -1,13 +1,10 @@
-package com.example.demo;
+package com.example.demo.jwtAuth.contoller;
 
-import com.example.demo.jdbcAuth.Hashing;
-import com.example.demo.jdbcAuth.User;
-import com.example.demo.jdbcAuth.UserRepo;
+import com.example.demo.jwtAuth.utils.Hashing;
+import com.example.demo.jwtAuth.model.User;
+import com.example.demo.jwtAuth.repo.UserRepo;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.*;
-
-import javax.annotation.PostConstruct;
 
 @RestController
 public class HelloController {
