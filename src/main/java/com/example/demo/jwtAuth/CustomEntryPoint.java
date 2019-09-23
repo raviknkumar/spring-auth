@@ -18,7 +18,7 @@ public class CustomEntryPoint implements AuthenticationEntryPoint {
         res.setStatus(HttpServletResponse.SC_UNAUTHORIZED);
         OutputStream out = res.getOutputStream();
         ObjectMapper mapper = new ObjectMapper();
-        mapper.writeValue(out, "Not allowed...");
+        mapper.writeValue(out, "Access Denied");
         out.flush();
     }
 }
